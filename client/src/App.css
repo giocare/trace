@@ -1,20 +1,37 @@
+.App {
+  height: 100vh;
+  background-color: #000000;
+  margin: 0;
+  padding: 1.5%;
+}
 
-.form, .users {
-  margin: 0px auto;
+.navbar-container {
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-top: 1%;
+  margin-bottom: 1%;
+}
+
+
+/* ================================================ */
+.decision-container {
+  display: inline-block;
+  border: white 2px dashed;
+  padding: 10px;
+}
+
+.decision-container button {
   width: 50%;
 }
 
-.form {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-direction: column;
+.decision-container button:hover {
+  color: white;
+  background-color: black;
 }
 
-.form > div {
-  margin-top: 10px;
-}
-.form button {
-  margin-top: 20px;
-  width: 100px;
+body {
+  font-family: 'Courier New', sans-serif;
+  background-color: black; 
+  font-size: 1.5em;
+  color: white;
 }
