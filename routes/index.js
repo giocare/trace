@@ -58,7 +58,7 @@ var pipl = require('pipl')(apiKey);
 var samplejsonFile = require("./superman.json")
 var testjson;
 
-app.get('/api/search', (req, res) => {
+router.get('/api/search', (req, res) => {
     const { first_name, last_name, email } =  req.query;
     //const Email =  req.body.email;
     console.log(`The result is ${last_name}`);
@@ -79,7 +79,7 @@ app.get('/api/search', (req, res) => {
   
   });
 
-app.get('/api/send-data', (req, res ) => {
+router.get('/api/send-data', (req, res ) => {
     console.log("On Testing Page");
     res.send(testjson);
   })
