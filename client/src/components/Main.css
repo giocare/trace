@@ -1,0 +1,20 @@
+div {
+  font-family: Courier, serif; 
+  font-size: 1.1em; 
+  font-weight: 300; 
+  color: #ffffff;
+}
+
+form {
+  background-color: #000000;
+}
+
+.form-group {
+  color: #ffffff;
+}
+
+.form-control {
+  display: inline;
+  background-color: #000000;
+  width: 40%;
+}
