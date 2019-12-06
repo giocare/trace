@@ -38,7 +38,8 @@ export default class Form extends Component {
           // gets element with id 'form_message" and prints the error on the screen
           document.getElementById('form_message').innerHTML = error;
       this.setState({ 
-        jsonData: JSON.stringify(res.data)
+        // jsonData: JSON.stringify(res.data),
+        jsonData: res.data
       });
     })
     .catch((e) => {
