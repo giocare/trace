@@ -53,7 +53,7 @@ const router = express.Router();
        
 // });
 
-const apiKey = '8mialfxul1ddgtmwohlclnhv'; // contact
+const apiKey = '8hrynoykepgbnur73yrj396z'; // business
 var pipl = require('pipl')(apiKey);
 var supermanFile = require("./superman.json")
 var zaibaFile = require("./zaiba-info.json")
@@ -66,38 +66,38 @@ var testjson;
 router.get('/api/search', (req, res) => {
     const { first_name, last_name, email } =  req.query;
     console.log(`We're searching for ${first_name}`);
-    // pipl.search.query(
-    //   {
-    //     "email": email, 
-    //     "first_name": first_name, 
-    //     "last_name": last_name, 
-    //     "country" : 'US', 
-    //     "state": 'NY',
-    //     "minimum_match": '0.5'
-    // }, function(err, data) {
-    //   console.log(data);
-    //   testjson = data;
+    pipl.search.query(
+      {
+        "email": email, 
+        "first_name": first_name, 
+        "last_name": last_name, 
+        "country" : 'US', 
+        "state": 'NY',
+        "minimum_match": '0.5'
+    }, function(err, data) {
+      console.log(data);
+      testjson = data;
+      res.send(testjson);
+    });
+    // if(first_name == 'Zaiba'){
+    //   testjson = zaibaFile;
     //   res.send(testjson);
-    // });
-    if(first_name == 'Zaiba'){
-      testjson = zaibaFile;
-      res.send(testjson);
-    }
-    else if(first_name == 'Jessica'){
-      testjson = jessicaFile;
-      res.send(testjson);
-    }
-    else if(first_name == 'Shanjida'){
-      testjson = shanjidaFile;
-      res.send(testjson);
-    }
-    else if(first_name == 'Tahmin'){
-      testjson = tahminFile;
-      res.send(testjson);
-    }else{
-      testjson = supermanFile;
-      res.send(testjson);
-    }
+    // }
+    // else if(first_name == 'Jessica'){
+    //   testjson = jessicaFile;
+    //   res.send(testjson);
+    // }
+    // else if(first_name == 'Shanjida'){
+    //   testjson = shanjidaFile;
+    //   res.send(testjson);
+    // }
+    // else if(first_name == 'Tahmin'){
+    //   testjson = tahminFile;
+    //   res.send(testjson);
+    // }else{
+    //   testjson = supermanFile;
+    //   res.send(testjson);
+    // }
 
 
   

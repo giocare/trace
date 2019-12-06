@@ -114,15 +114,18 @@ export default class DisplayData extends Component {
 				}
 				</ul> : <p></p>
 			}
+
+			<div className="decision-container">
+				<h4>Is this your information?</h4>
+				<button onClick={this.yesHandler}>Yes</button>
+				<button onClick={this.noHandler}>No</button>
+			</div>
 		  </div>
 	  )
 
   }
 
-  multiplePpl = e => {
-	// {console.log("More Than One Person Found")}
-	// {console.log(this.state.json.possible_persons)}
-			
+  multiplePpl = e => {		
 		return(
 		  <div>
 			  <p>We have found {this.state.json[`@persons_count`]} people</p>
@@ -215,6 +218,12 @@ export default class DisplayData extends Component {
 						)	
 					})
 				}
+
+					<div className="decision-container">
+						<h4>Is this your information?</h4>
+						<button onClick={this.yesHandler}>Yes</button>
+						<button onClick={this.noHandler}>No</button>
+					</div>
 		  </div>
 		);
   }
@@ -245,7 +254,7 @@ export default class DisplayData extends Component {
 				<div>
 					<h1>Results:</h1>
 
-					{console.log(this.state.json[`@persons_count`])}
+					{ console.log(this.state.json[`@persons_count`])}
 					{ this.state.json[`@persons_count`] === 1 ? this.onePerson() : <p></p>}
 
 					{ this.state.json[`@persons_count`] > 1 ? this.multiplePpl() : <p></p> }
@@ -255,11 +264,7 @@ export default class DisplayData extends Component {
 
 
 
-					<div className="decision-container">
-						<h4>Is this your information?</h4>
-						<button onClick={this.yesHandler}>Yes</button>
-						<button onClick={this.noHandler}>No</button>
-					</div>
+
 			</div>
 			  
 		  )
