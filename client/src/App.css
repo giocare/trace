@@ -17,11 +17,11 @@
 .decision-container {
   display: inline-block;
   border: white 2px dashed;
-  padding: 10px;
+  padding: 10px 10px 10px 10px;
 }
 
 .decision-container button {
-  width: 50%;
+  width: 40%;
 }
 
 .decision-container button:hover {
@@ -36,9 +36,7 @@ body {
   color: white;
 }
 
-
-
-.button {
+button {
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
 	background-color:#ffffff;
 	border-radius:5px;
@@ -51,14 +49,19 @@ body {
 	font-weight:bold;
 	padding:6px 24px;
 	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
+  text-shadow:0px 1px 0px #ffffff;
+  margin-right: 30px;
 }
-.button:hover {
+
+button:hover {
 	background-color:#f6f6f6;
 }
-.button:active {
+
+button:active {
 	position:relative;
 	top:1px;
 }
 
-      
+h4 {
+  margin: 0 0 20px 0;
+}

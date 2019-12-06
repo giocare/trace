@@ -57,19 +57,19 @@ export default class Form extends Component {
             name='first_name' 
             onChange={e=> this.handleEvent(e)}
             />
-          <br></br>
+          <p></p>
           <label> Last Name:</label>
           <input 
             name='last_name' 
             onChange={e=> this.handleEvent(e)}
             />
-          <br></br>
+          <p></p>
           <label> Email Address:</label>
           <input 
             name='email' 
             onChange={e=> this.handleEvent(e)}
             />
-          <br></br>
+          <p></p>
           <button>Submit</button>
           <button><Link to="/display">Check Results</Link></button>
           <p id="form_message"></p>

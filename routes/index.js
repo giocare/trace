@@ -53,34 +53,57 @@ const router = express.Router();
        
 // });
 
-const apiKey = '1ak4al0qnz1u4tm5svgxqxp5'; // contact
+const apiKey = '8mialfxul1ddgtmwohlclnhv'; // contact
 var pipl = require('pipl')(apiKey);
-var samplejsonFile = require("./superman.json")
+var supermanFile = require("./superman.json")
+var zaibaFile = require("./zaiba-info.json")
+var jessicaFile = require("./jessica-info.json")
+var tahminFile = require("./tahmin-info.json")
+var shanjidaFile = require("./shanjida-info.json")
+
 var testjson;
 
 router.get('/api/search', (req, res) => {
     const { first_name, last_name, email } =  req.query;
-    //const Email =  req.body.email;
-    console.log(`The result is ${last_name}`);
+    console.log(`We're searching for ${first_name}`);
     // pipl.search.query(
     //   {
-    //     "email": 'zaibaiqbal1@gmail.com', 
-    //     "first_name": 'Zaiba', 
-    //     "last_name": 'Iqbal', 
+    //     "email": email, 
+    //     "first_name": first_name, 
+    //     "last_name": last_name, 
     //     "country" : 'US', 
     //     "state": 'NY',
     //     "minimum_match": '0.5'
     // }, function(err, data) {
     //   console.log(data);
-    //   // res.json(data)
+    //   testjson = data;
+    //   res.send(testjson);
     // });
-    testjson = samplejsonFile;
-    res.send(testjson);
+    if(first_name == 'Zaiba'){
+      testjson = zaibaFile;
+      res.send(testjson);
+    }
+    else if(first_name == 'Jessica'){
+      testjson = jessicaFile;
+      res.send(testjson);
+    }
+    else if(first_name == 'Shanjida'){
+      testjson = shanjidaFile;
+      res.send(testjson);
+    }
+    else if(first_name == 'Tahmin'){
+      testjson = tahminFile;
+      res.send(testjson);
+    }else{
+      testjson = supermanFile;
+      res.send(testjson);
+    }
+
+
   
   });
 
 router.get('/api/send-data', (req, res ) => {
-    console.log("On Testing Page");
     res.send(testjson);
   })
   
