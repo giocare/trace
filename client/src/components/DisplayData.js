@@ -190,7 +190,7 @@ export default class DisplayData extends Component {
 
 
 										{/* JOBS */}
-										{person.educations ? 
+										{person.jobs ? 
 										<ul> Previous Jobs Located: 
 										{
 											person.jobs.map(function(item, i){
@@ -259,7 +259,7 @@ export default class DisplayData extends Component {
 
 					{ this.state.json[`@persons_count`] > 1 ? this.multiplePpl() : <p></p> }
 
-					{ this.state.json[`@persons_count`] === 0 ? <h1>We were unable to find your information</h1> : <p></p> }
+					{ this.state.json[`@persons_count`] == undefined ? <h1>We were unable to find your information</h1> : <p></p> }
 
 
 
