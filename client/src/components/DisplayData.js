@@ -1,43 +1,27 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import YesPage from '../components/YesPage';
-import NoPage from '../components/NoPage';
 
 
 
 export default class DisplayData extends Component {
-
-	state = {
-		json: '',
-		buttonPressed: undefined
-	}
+	constructor(props) {
+		super(props);
+		this.state = {
+			json: '',
+		}
+	  }
+	
 
   componentDidMount () {
     const generateGetUrl = '/api/send-data';
     axios.get(generateGetUrl).then(res => {
-		// console.log(res.data);
+		console.log(res.data);
 		this.setState({
 			json: res.data
 		})
-		//console.log(this.state.json.query.person.phones[0].number)
     });
   };
 
-  yesHandler = e => {
-	e.preventDefault();
-	this.setState({
-		buttonPressed: 'yes'
-	})
-	console.log("Yes button pressed")
-  };
-
-  noHandler = e => {
-	e.preventDefault();
-	this.setState({
-		buttonPressed: 'no'
-	})
-	console.log("No button pressed")
-  };
 
   onePerson = e => {
 	  return(
@@ -62,7 +46,14 @@ export default class DisplayData extends Component {
 				</ul> : <p></p>}
 
 			{/* AGE */}
-			{this.state.json.person.dob.display ? <p>You've been existing for {this.state.json.person.dob.display} </p> : <p></p> }
+			{this.state.json.person.dob ? 
+				<ul>
+					{
+						<li>You've been existing for {this.state.json.person.dob.display} </li>
+					}
+				</ul> 
+					
+				: <p></p> }
 
 			{/* ADDRESS */}
 			{this.state.json.person.addresses ?
@@ -115,11 +106,6 @@ export default class DisplayData extends Component {
 				</ul> : <p></p>
 			}
 
-			<div className="decision-container">
-				<h4>Is this your information?</h4>
-				<button onClick={this.yesHandler}>Yes</button>
-				<button onClick={this.noHandler}>No</button>
-			</div>
 		  </div>
 	  )
 
@@ -127,12 +113,14 @@ export default class DisplayData extends Component {
 
   multiplePpl = e => {		
 		return(
-		  <div>
+		<div>
 			  <p>We have found {this.state.json[`@persons_count`]} people</p>
+		  <div className="person-container">
+			
 				{
 					this.state.json.possible_persons.map(function(person, i){
 						return (
-							<div>
+							<div className="person-card">
 								<h2 key={i}>Person {i+1}</h2>
 
 									{/* NAME */}
@@ -160,8 +148,10 @@ export default class DisplayData extends Component {
 										</ul> : <p></p>}
 
 										{/* AGE */}
-										{person.dob ? <p>You've been existing for {person.dob.display} </p> : <p></p> }
-
+										<ul>
+											{person.dob ? <p>You've been existing for {person.dob.display} </p> : <p></p> }
+										</ul>
+										
 
 										{/* ADDRESS */}
 										{person.addresses ? 
@@ -219,17 +209,15 @@ export default class DisplayData extends Component {
 					})
 				}
 
-					<div className="decision-container">
-						<h4>Is this your information?</h4>
-						<button onClick={this.yesHandler}>Yes</button>
-						<button onClick={this.noHandler}>No</button>
-					</div>
+					
 		  </div>
+		</div>
 		);
   }
   
 
   render() {
+	  
 	  if (this.state.json === '' & this.state.buttonPressed === undefined){
 		  return (
 			<div>
@@ -238,17 +226,6 @@ export default class DisplayData extends Component {
 			</div>
 		  )
 	  }
-
-	  else if(this.state.json !== '' & this.state.buttonPressed === 'yes'){
-		  return(
-			<YesPage />
-		  )
-	  }
-	  else if(this.state.json !== '' & this.state.buttonPressed === 'no'){
-		return(
-		  <NoPage />
-		)
-	}
 	  else {
 		  return (
 				<div>
@@ -259,7 +236,7 @@ export default class DisplayData extends Component {
 
 					{ this.state.json[`@persons_count`] > 1 ? this.multiplePpl() : <p></p> }
 
-					{ this.state.json[`@persons_count`] == undefined ? <h1>We were unable to find your information</h1> : <p></p> }
+					{ this.state.json[`@persons_count`] === undefined ? <h1>We were unable to find your information</h1> : <p></p> }
 
 
 

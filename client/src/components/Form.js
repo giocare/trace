@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
 
-
 export default class Form extends Component {
 
   state = {
     first_name: '',
     last_name: '',
     email:'',
-    jsonData: []
+    jsonData: [],
   }
 
   handleEvent = e => {
@@ -21,9 +20,6 @@ export default class Form extends Component {
   formHandler = e => {
     e.preventDefault();
     const { first_name, last_name, email } = this.state;
-    // console.log(`First Name : ${first_name}`);
-    // console.log(`Last Name : ${last_name}`);
-    // console.log(`Email : ${email}`);
     const searchUrl = '/api/search';
     const options = {
       params: {
@@ -38,7 +34,6 @@ export default class Form extends Component {
           // gets element with id 'form_message" and prints the error on the screen
           document.getElementById('form_message').innerHTML = error;
       this.setState({ 
-        // jsonData: JSON.stringify(res.data),
         jsonData: res.data
       });
     })
@@ -75,7 +70,8 @@ export default class Form extends Component {
           <button><Link to="/display">Check Results</Link></button>
           <p id="form_message"></p>
         </form>
-      </React.Fragment>
+     </React.Fragment>
     );
   }
 }
+

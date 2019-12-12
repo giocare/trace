@@ -28,6 +28,7 @@
   color: white;
   background-color: black;
 }
+/* ================================================ */
 
 body {
   font-family: 'Courier New', sans-serif;
@@ -64,4 +65,34 @@ button:active {
 
 h4 {
   margin: 0 0 20px 0;
+}
+/* ================================================ */
+.person-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  /* background-color: #2196F3; */
+  padding: 10px;
+}
+.person-card {
+  /* display: flex; */
+  /* flex-direction: column; */
+  border: lightgray 2px solid;
+  padding: 0 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+
+
+}
+
+@keyframes load {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.person-card {
+  -webkit-animation: load 5s;
+  animation: load 5s ;
 }

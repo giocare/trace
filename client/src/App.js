@@ -46,6 +46,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import './App.css';
 
 import DisplayData from './components/DisplayData';
+import Decision from './components/Decision';
 
 import Form from './components/Form';
 
@@ -56,6 +57,7 @@ function App() {
       <div className="App">
         <Route exact path="/" component={Form} />
         <Route exact path="/display" component={DisplayData} />
+        <Route exact path="/decision" component={Decision} />
       </div>
     </Router>
   );

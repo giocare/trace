@@ -12,41 +12,66 @@ var zaibaFile = require("./zaiba-info.json")
 var jessicaFile = require("./jessica-info.json")
 var tahminFile = require("./tahmin-info.json")
 var shanjidaFile = require("./shanjida-info.json")
+var dongniFile = require("./dongni-info.json")
+var testFile = require("./jessica-business-info.json")
+
+
 
 var testjson;
+var fname, lname, uemail;
 
 router.get('/api/search', (req, res) => {
     const { first_name, last_name, email } =  req.query;
-    console.log(`We're searching for ${first_name}`);
-    // pipl.search.query(
-    //   {
-    //     "email": email, 
-    //     "first_name": first_name, 
-    //     "last_name": last_name, 
-    //     "country" : 'US', 
-    //     "state": 'NY',
-    //     "minimum_match": '0.5'
-    // }, function(err, data) {
-    //   console.log(data);
-    //   testjson = data;
-    //   res.send(testjson);
-    // });
+    console.log(`We're searching for ${first_name} ${last_name}`);
+    fname = first_name;
+    lname = last_name;
+    uemail = email;
 
-    axios.get(`https://api.pipl.com/search/?person={"names":[{"first": "${first_name}","last": "${last_name}"}],"emails":[{"address": "${email}"}],"addresses":[{"country":"US", "state": "NY"}]}&key=${apiKey}`).then(person => {
-      console.log(person.data);
-      testjson = person.data;
-      res.send(testjson);
-    }).catch((error) => {
-      console.log(error);
-    })
+    // axios.get(`https://api.pipl.com/search/?person={"names":[{"first": "${first_name}","last": "${last_name}"}],"emails":[{"address": "${email}"}],"addresses":[{"country":"US", "state": "NY"}]}&key=${apiKey}`).then(person => {
+    //   console.log(person.data);
+    //   testjson = person.data;
+    //   res.send(testjson);
+    // }).catch((error) => {
+    //   console.log(error);
+    // })
+
+
+        res.send('Completed' + uemail);
+    
   
   });
 
-
   
 router.get('/api/send-data', (req, res ) => {
-    res.send(testjson);
+  console.log(fname);
+      if(fname == 'Zaiba'){
+      testjson = zaibaFile;
+      res.send(testjson);
+    }
+    else if(fname == 'Jessica'){
+      testjson = jessicaFile;
+      res.send(testjson);
+    }
+    else if(fname == 'Shanjida'){
+      testjson = shanjidaFile;
+      res.send(testjson);
+    }
+    else if(fname == 'Tahmin'){
+      testjson = tahminFile;
+      res.send(testjson);
+    }
+    else if(fname == 'Dongni'){
+      testjson = dongniFile;
+      res.send(testjson);
+    }else{
+      testjson = testFile;
+      res.send(testjson);
+    }
   })
+
+
+
+  
   
 
 module.exports = router;
